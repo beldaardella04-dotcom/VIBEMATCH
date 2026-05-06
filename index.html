@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>VIBEMATCH 🎵</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shell">
+  <section id="screen-home" class="screen active">
+ 
+    <div class="home-head">
+      <h1 class="logo">VIBEMATCH 🎵</h1>
+      <p class="logo-sub">Pick your mood · Feel the music</p>
+    </div>
+    <div class="search-wrap">
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="search-input" type="text" placeholder="Cari judul atau penyanyi..." oninput="doSearch()">
+        <span id="search-clear" class="search-clear" onclick="clearSearch()">✕</span>
+      </div>
+    </div>
+
+    <div class="chips-row" id="filter-row"></div>
+    <div class="sort-row">
+      <span class="sort-label">Urutkan:</span>
+      <div id="sort-row"></div>
+    </div>
+ 
+    <div id="browse-content" class="browse-content"></div>
+  </section>
+ 
+  <section id="screen-player" class="screen">
+ 
+    <div class="player-nav">
+      <button class="nav-btn" onclick="goHome()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        
+      </button>
+      <div class="bpm-pill" id="player-bpm">0 BPM</div>
+    </div>
+ 
+    <div class="player-info">
+      <h2 id="player-title">Judul Lagu</h2>
+      <p id="player-artist">Artis</p>
+      <span class="mood-tag" id="player-mood">mood</span>
+    </div>
+ 
+    <div class="lyrics-box" id="lyrics-box">
+      <div class="lyrics-inner" id="lyrics-inner"></div>
+      <div class="lyrics-off-msg">Lirik dimatikan</div>
+    </div>
+ 
+    <div class="progress-wrap">
+      <div class="progress-track" id="progress-track" onclick="seekTo(event)">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="time-row">
+        <span id="time-current">0:00</span>
+        <span id="time-total">0:00</span>
+      </div>
+    </div>
+ 
+    <div class="toggle-row">
+      <button class="tgl on" id="tgl-lyrics"   onclick="toggleLyrics()">
+        <span class="tgl-dot"></span> Lirik
+      </button>
+      <button class="tgl on" id="tgl-auto"     onclick="toggleAutoNext()">
+        <span class="tgl-dot"></span> Auto Next
+      </button>
+      <button class="tgl"    id="tgl-shuffle"  onclick="toggleShuffle()">
+        <span class="tgl-dot"></span> Shuffle
+      </button>
+    </div>
+ 
+    <div class="btn-row">
+ 
+      <button class="btn-icon sm" title="Ke lagu pertama / restart" onclick="restartOrFirst()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="19,20 9,12 19,4" fill="currentColor" stroke="none"/><line x1="5" y1="4" x2="5" y2="20" stroke-linecap="round"/></svg>
+      </button>
+ 
+      <button class="btn-icon" title="Sebelumnya" onclick="skipSong(-1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+ 
+      <button class="btn-play" id="btn-play" onclick="togglePlay()">
+        <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      </button>
+ 
+      <button class="btn-icon" title="Berikutnya" onclick="skipSong(1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+ 
+      <button class="btn-icon sm" title="Playlist" onclick="togglePlaylistPanel()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg>
+      </button>
+ 
+    </div>
+ 
+  </section>
+ 
+<div class="playlist-panel" id="playlist-panel">
+  <div class="pl-header">
+    <span class="pl-title">Playlist</span>
+    <button class="nav-btn" onclick="togglePlaylistPanel()">✕ Tutup</button>
+  </div>
+  <div class="pl-list" id="playlist-inner"></div>
+</div>
+ 
+<audio id="audio" preload="auto"></audio>
+ 
+<script src="script.js"></script>
+</body>
+</html>
