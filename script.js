@@ -2,6 +2,7 @@ const SONGS_DB = [
   "lirik/Monokrom.json",
   "lirik/Tujuhbelas.json",
   "lirik/Sebuahkisahklasik.json",
+  "lirik/Photograph.json",
   "lirik/Sundaymorning.json",
   "lirik/Amilliondreams.json",
   "lirik/Untukku.json",
@@ -303,7 +304,6 @@ function toggleAutoNext() {
 function toggleShuffle() {
   S.shuffle = !S.shuffle;
   el("tgl-shuffle").classList.toggle("on", S.shuffle);
-  // Rebuild queue, pertahankan lagu yang sedang diputar
   const curId = S.queue[S.curIdx]?.id;
   buildQueue(curId);
   renderPlaylistPanel();
