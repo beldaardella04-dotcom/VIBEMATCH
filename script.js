@@ -2,7 +2,6 @@ const SONGS_DB = [
   "lirik/Monokrom.json",
   "lirik/Tujuhbelas.json",
   "lirik/Sebuahkisahklasik.json",
-  "lirik/Photograph.json",
   "lirik/Sundaymorning.json",
   "lirik/Amilliondreams.json",
   "lirik/Untukku.json",
